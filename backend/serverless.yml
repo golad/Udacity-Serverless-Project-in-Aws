@@ -1,6 +1,6 @@
-org: newthingade
-app: serverless
-service: serverless
+org: gbolad
+app: srvless
+service: srvless
 
 plugins:
   - serverless-webpack
@@ -20,9 +20,9 @@ provider:
     apiGateway: true
 
   environment:
-    PROJECT_NAME: udacity
-    TODOS_TABLE: udacity-serverless-application-todo-${self:provider.stage}
-    S3_BUCKET_NAME: udacity-serverless-application-todo-${self:provider.stage}
+    PROJECT_NAME: srvless
+    TODOS_TABLE: srvless-${self:provider.stage}
+    S3_BUCKET_NAME: srvless-${self:provider.stage}
 
 custom:
   documentation:
