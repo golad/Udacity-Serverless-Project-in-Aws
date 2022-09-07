@@ -3,6 +3,12 @@ import 'source-map-support/register'
 import {APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult} from 'aws-lambda'
 import {CreateTodoRequest} from '../../requests/CreateTodoRequest';
 import {createToDo} from "../../businessLogic/ToDo";
+import * as AWSXRAY from "aws-xray-sdk"
+import * as AWS from "aws-sdk";
+
+const XAWS = AWSXRAY.captureAWS(AWS)
+
+const docClient = new XAWS.DynamoDB.DocumentClient()
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     // TODO: Implement creating a new TODO item

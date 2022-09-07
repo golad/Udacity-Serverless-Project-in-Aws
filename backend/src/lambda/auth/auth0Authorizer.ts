@@ -72,9 +72,11 @@ async function verifyToken(authHeader: string): Promise<JwtPayload> {
 
 function getToken(authHeader: string): string {
   if (!authHeader) throw new Error('No authentication header')
+  logger.error('No authentication header{authHeader.err}')
 
   if (!authHeader.toLowerCase().startsWith('bearer '))
     throw new Error('Invalid authentication header')
+    logger.error('Invalid authentication header{bearer}')
 
   const split = authHeader.split(' ')
   const token = split[1]
